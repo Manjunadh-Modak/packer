@@ -1,0 +1,18 @@
+# Installation of Hashicorp Packer 
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install packer
+
+# issue resolution:
+
+gpg --keyserver keyserver.ubuntu.com --recv-key 23F3D4EA75716059
+gpg -a --export 23F3D4EA75716059 | sudo apt-key add -
+sudo apt update
+sudo apt install packer
+
+# commands
+packer init .
+packer fmt .
+packer validate .
+packer build <file-name>.pkr.hcl
