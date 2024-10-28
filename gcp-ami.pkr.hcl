@@ -8,9 +8,8 @@ packer {
 }
 
 source "googlecompute" "yeedu" {
-
-  image_name          = "ami-yeedu"
-  source_image        = "ubuntu-os-cloud/ubuntu-2004-lts"
+  image_name          = "ami-yeedu-1"
+  source_image        = "test-ami-image"
   instance_name       = "yeedu-instance"
   project_id          = "modak-nabu"
   network_project_id  = "modak-nabu"
@@ -18,13 +17,15 @@ source "googlecompute" "yeedu" {
   subnetwork          = "custom-subnet-modak-nabu"
   ssh_username        = "yeedu"
   zone                = "us-central1-a"
-  machine_type        = "n1-standard-4"
+  machine_type        = "g2-standard-4"
   disk_size           = 50
   disk_type           = "pd-balanced"
-  startup_script_file = "setup.sh"
-
+  use_internal_ip = true
+  ssh_private_key_file = "/home/ma0804/Downloads/private_key.txt"
+  on_host_maintenance= "TERMINATE"
+  # startup_script_file = "setup.sh"
 }
 
 build {
-  sources = ["sources.googlecompute.yeedu-custom-image"]
+  sources = ["source.googlecompute.yeedu"]
 }
