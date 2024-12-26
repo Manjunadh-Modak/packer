@@ -14,7 +14,6 @@ source azure-arm vm {
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
 
-  location                          = "eastus"
   managed_image_name                = "sample-image-yeedu"
   managed_image_resource_group_name = "yeedu"
 
@@ -22,7 +21,7 @@ source azure-arm vm {
 
   virtual_network_name                = "nabusparkvnet"
   virtual_network_subnet_name         = "yeedu-1"
-  virtual_network_resource_group_name = "yeedu"
+  virtual_network_resource_group_name = "Nabu_new"
 
   communicator    = "ssh"
   os_type         = "Linux"
